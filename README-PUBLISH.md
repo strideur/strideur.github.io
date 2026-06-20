@@ -2,13 +2,25 @@
 
 Site statique pret a publier pour Nova Command.
 
-## Avant de publier
+## Fichiers a envoyer sur GitHub Pages
 
-1. Remplacer `https://nova-command.app/` dans `index.html`, `robots.txt` et `sitemap.xml` par le vrai domaine.
-2. Garder `downloads/Nova-Command-portable.zip` dans le dossier deploye.
-3. Heberger le dossier `website/` sur un domaine public.
-4. Ajouter le domaine dans Google Search Console et Bing Webmaster Tools.
-5. Envoyer `https://ton-domaine/sitemap.xml`.
+Quand tu modifies le site, envoie uniquement les fichiers qui ont change :
+
+- `index.html`
+- `styles.css`
+- `demo.js`
+- `robots.txt`
+- `sitemap.xml`
+- `assets/` seulement si une image change
+- fichiers Google/Bing de validation, a garder a la racine
+
+Le ZIP de l'app reste dans une GitHub Release :
+`https://github.com/strideur/strideur.github.io/releases/download/v1.0.0/Nova-Command-portable.zip`
+
+## URL publiques
+
+- Site : `https://strideur.github.io/`
+- Sitemap : `https://strideur.github.io/sitemap.xml`
 
 ## Test local
 

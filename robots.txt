@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nova-command.app/sitemap.xml
+Sitemap: https://strideur.github.io/sitemap.xml
