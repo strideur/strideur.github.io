@@ -127,32 +127,105 @@
       <section id="demo" class="demo-section" aria-labelledby="demo-title">
         <div class="section-heading">
           <p class="eyebrow">Demo interactive</p>
-          <h2 id="demo-title">Teste Nova sans rien installer</h2>
-          <p>Cette demo est volontairement fictive : aucune vraie app ne s'ouvre, aucune donnee de ton PC n'est lue.</p>
+          <h2 id="demo-title">Nova directement dans le site</h2>
+          <p>Un cadre fictif qui montre l'app comme elle serait ouverte sur Windows. Tu peux cliquer, chercher et changer de mode, mais rien ne s'ouvre vraiment.</p>
         </div>
 
-        <div class="demo-shell">
-          <div class="demo-sidebar" aria-label="Modes de demo">
-            <button class="demo-tab active" type="button" data-mode="apps">Apps</button>
-            <button class="demo-tab" type="button" data-mode="web">Web</button>
-            <button class="demo-tab" type="button" data-mode="calc">Calcul</button>
-            <button class="demo-tab" type="button" data-mode="ai">Nova IA</button>
+        <div class="app-demo-frame">
+          <div class="app-titlebar">
+            <div class="window-dots" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <strong>Nova Command</strong>
+            <small>Demo securisee</small>
           </div>
 
-          <div class="demo-window">
-            <div class="demo-bar">
-              <span class="demo-orb"></span>
-              <input id="demo-search" type="text" value="discord" aria-label="Recherche demo Nova">
-              <kbd id="demo-hint">Enter</kbd>
-            </div>
+          <div class="app-demo-body">
+            <aside class="app-demo-nav" aria-label="Modes de demo Nova">
+              <button class="demo-tab active" type="button" data-mode="apps">
+                <span>A</span>
+                Apps
+              </button>
+              <button class="demo-tab" type="button" data-mode="games">
+                <span>G</span>
+                Jeux
+              </button>
+              <button class="demo-tab" type="button" data-mode="web">
+                <span>W</span>
+                Web
+              </button>
+              <button class="demo-tab" type="button" data-mode="calc">
+                <span>=</span>
+                Calcul
+              </button>
+              <button class="demo-tab" type="button" data-mode="ai">
+                <span>N</span>
+                Nova IA
+              </button>
+            </aside>
 
-            <div class="demo-status">
-              <span id="demo-label">Suggestions</span>
-              <strong id="demo-result">Pret a lancer</strong>
-            </div>
+            <section class="app-demo-main" aria-label="Interface fictive Nova Command">
+              <div class="app-search-row">
+                <span class="demo-orb"></span>
+                <input id="demo-search" type="text" value="discord" aria-label="Recherche demo Nova">
+                <kbd id="demo-hint">Enter</kbd>
+              </div>
 
-            <div id="demo-results" class="demo-results" aria-live="polite"></div>
+              <div class="app-meta-row">
+                <span id="demo-label">Suggestions</span>
+                <strong id="demo-result">Pret a lancer</strong>
+              </div>
+
+              <div id="demo-results" class="app-result-grid" aria-live="polite"></div>
+            </section>
+
+            <aside class="app-detail-panel" aria-label="Detail de la selection demo">
+              <div class="detail-icon" id="demo-detail-icon">DS</div>
+              <h3 id="demo-detail-title">Discord</h3>
+              <p id="demo-detail-subtitle">Application fictive</p>
+              <div class="detail-list">
+                <div>
+                  <span>Source</span>
+                  <strong id="demo-detail-source">Apps Windows</strong>
+                </div>
+                <div>
+                  <span>Action</span>
+                  <strong id="demo-detail-action">Simulation uniquement</strong>
+                </div>
+                <div>
+                  <span>Etat</span>
+                  <strong>Rien n'est lance</strong>
+                </div>
+              </div>
+              <div class="detail-actions">
+                <button type="button" id="demo-primary-action">Simuler</button>
+                <button type="button" id="demo-clear-action">Reset</button>
+              </div>
+            </aside>
           </div>
+
+          <div class="app-demo-footer">
+            <span>Alt + Space</span>
+            <p id="demo-toast">Demo locale : aucune vraie application n'est ouverte.</p>
+            <span>Tab pour IA</span>
+          </div>
+        </div>
+
+        <div class="demo-notes">
+          <article>
+            <strong>Vrai rendu d'app</strong>
+            <p>Le cadre reprend la logique de Nova : navigation, recherche, resultats, details et actions.</p>
+          </article>
+          <article>
+            <strong>Zero risque</strong>
+            <p>Les apps sont inventees pour la vitrine. Le site ne lit pas ton PC et ne lance aucun programme.</p>
+          </article>
+          <article>
+            <strong>Parfait pour vendre le projet</strong>
+            <p>Les visiteurs comprennent directement a quoi ressemble Nova avant de telecharger.</p>
+          </article>
         </div>
       </section>
 
