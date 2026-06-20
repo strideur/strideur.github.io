@@ -131,101 +131,209 @@
           <p>Un cadre fictif qui montre l'app comme elle serait ouverte sur Windows. Tu peux cliquer, chercher et changer de mode, mais rien ne s'ouvre vraiment.</p>
         </div>
 
-        <div class="app-demo-frame">
-          <div class="app-titlebar">
-            <div class="window-dots" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <strong>Nova Command</strong>
-            <small>Demo securisee</small>
-          </div>
-
-          <div class="app-demo-body">
-            <aside class="app-demo-nav" aria-label="Modes de demo Nova">
-              <button class="demo-tab active" type="button" data-mode="apps">
-                <span>A</span>
-                Apps
-              </button>
-              <button class="demo-tab" type="button" data-mode="games">
-                <span>G</span>
-                Jeux
-              </button>
-              <button class="demo-tab" type="button" data-mode="web">
-                <span>W</span>
-                Web
-              </button>
-              <button class="demo-tab" type="button" data-mode="calc">
-                <span>=</span>
-                Calcul
-              </button>
-              <button class="demo-tab" type="button" data-mode="ai">
-                <span>N</span>
-                Nova IA
-              </button>
-            </aside>
-
-            <section class="app-demo-main" aria-label="Interface fictive Nova Command">
-              <div class="app-search-row">
-                <span class="demo-orb"></span>
-                <input id="demo-search" type="text" value="discord" aria-label="Recherche demo Nova">
-                <kbd id="demo-hint">Enter</kbd>
+        <div class="nova-live-demo" id="nova-demo" data-theme="graphite">
+          <main class="launcher mock-launcher" aria-label="Nova Command demo">
+            <header class="windowbar">
+              <div class="window-title">
+                <span class="mark">N</span>
+                <span>Nova Command</span>
               </div>
+              <span class="drag-hint">demo</span>
+            </header>
 
-              <div class="app-meta-row">
-                <span id="demo-label">Suggestions</span>
-                <strong id="demo-result">Pret a lancer</strong>
-              </div>
-
-              <div id="demo-results" class="app-result-grid" aria-live="polite"></div>
+            <section class="searchbar">
+              <span class="search-glyph" aria-hidden="true"></span>
+              <input id="demo-search" type="search" autocomplete="off" spellcheck="false" value="discord" aria-label="Rechercher dans la demo">
+              <button id="demo-ai-provider" class="ai-provider-button" type="button" hidden>
+                <span>Modele IA</span>
+                <strong>Nova Assistant</strong>
+              </button>
+              <span class="shortcut-keys"><kbd>Alt</kbd><kbd>N</kbd></span>
             </section>
 
-            <aside class="app-detail-panel" aria-label="Detail de la selection demo">
-              <div class="detail-icon" id="demo-detail-icon">DS</div>
-              <h3 id="demo-detail-title">Discord</h3>
-              <p id="demo-detail-subtitle">Application fictive</p>
-              <div class="detail-list">
-                <div>
-                  <span>Source</span>
-                  <strong id="demo-detail-source">Apps Windows</strong>
+            <nav class="toolbar" aria-label="Filtres demo">
+              <div id="demo-status" class="status">Demo PC - 24 elements</div>
+              <div class="tabs">
+                <button class="tab is-active" type="button" data-view="all">Tout</button>
+                <button class="tab" type="button" data-view="app">Apps</button>
+                <button class="tab" type="button" data-view="game">Jeux</button>
+                <button class="tab" type="button" data-view="recent">Recents</button>
+              </div>
+              <button id="demo-refresh" class="refresh" type="button" title="Rescanner la demo" aria-label="Rescanner">&#8635;</button>
+            </nav>
+
+            <section class="content">
+              <div id="demo-calc-card" class="answer-card calc-card" hidden>
+                <span class="answer-kicker">Calculator</span>
+                <div class="answer-row">
+                  <strong id="demo-calc-expression"></strong>
+                  <span>&rarr;</span>
+                  <strong id="demo-calc-result"></strong>
                 </div>
-                <div>
-                  <span>Action</span>
-                  <strong id="demo-detail-action">Simulation uniquement</strong>
+                <small>Entree copie le resultat</small>
+              </div>
+
+              <button id="demo-web-card" class="answer-card web-card" type="button" hidden>
+                <span class="answer-kicker">Recherche web</span>
+                <strong id="demo-web-query"></strong>
+                <small>Navigateur par defaut - simulation</small>
+              </button>
+
+              <section id="demo-ai-panel" class="ai-panel" hidden>
+                <header class="ai-panel-header">
+                  <div>
+                    <span class="answer-kicker">Mode IA</span>
+                    <strong>Parle a Nova Assistant</strong>
+                  </div>
+                  <button id="demo-ai-reset" type="button">Nouvelle discussion</button>
+                </header>
+                <div class="ai-workspace">
+                  <aside class="ai-conversations" aria-label="Conversations demo">
+                    <div class="ai-conversations-header">
+                      <strong>Projets</strong>
+                      <button type="button">+</button>
+                    </div>
+                    <div class="ai-conversation-list">
+                      <button class="ai-conversation is-active" type="button">
+                        <strong>Demo Nova</strong>
+                        <small>30j restants</small>
+                      </button>
+                      <button class="ai-conversation" type="button">
+                        <strong>Actions web</strong>
+                        <small>28j restants</small>
+                      </button>
+                    </div>
+                  </aside>
+                  <div id="demo-ai-messages" class="ai-messages" aria-live="polite">
+                    <article class="ai-message assistant">
+                      <strong>NOVA ASSISTANT</strong>
+                      <p>Je peux simuler l'ouverture d'apps, les recherches web et les reglages, sans toucher a ton PC.</p>
+                    </article>
+                  </div>
                 </div>
+                <div class="ai-limit ai-limit-floating">
+                  <i aria-hidden="true"></i>
+                  <span>Limite <strong>12/60</strong></span>
+                </div>
+              </section>
+
+              <div id="demo-sections" class="sections"></div>
+            </section>
+
+            <footer class="bottombar">
+              <button id="demo-settings-button" class="settings-button" title="Parametres" aria-label="Parametres" type="button">&#9881;</button>
+              <span id="demo-selection-hint">Selectionnez une application</span>
+              <span class="bottombar-hints">
+                <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> Naviguer</span>
+                <span><kbd>Shift</kbd> Multi</span>
+                <span><kbd>Enter</kbd> Simuler</span>
+                <span><kbd>Tab</kbd> IA</span>
+                <span><kbd>Esc</kbd> Retour</span>
+              </span>
+              <span class="ai-bottombar-hints">
+                <span>Ask AI <kbd>Enter</kbd></span>
+                <span class="hint-separator">|</span>
+                <span>Actions <kbd>Ctrl</kbd><kbd>K</kbd></span>
+              </span>
+            </footer>
+          </main>
+
+          <aside id="demo-settings-panel" class="settings-panel" hidden aria-label="Parametres demo">
+            <nav class="settings-sidebar">
+              <div class="settings-brand">
+                <span class="mark">N</span>
                 <div>
-                  <span>Etat</span>
-                  <strong>Rien n'est lance</strong>
+                  <strong>Parametres</strong>
+                  <span>Nova Command</span>
                 </div>
               </div>
-              <div class="detail-actions">
-                <button type="button" id="demo-primary-action">Simuler</button>
-                <button type="button" id="demo-clear-action">Reset</button>
+              <button class="settings-nav-item is-active" data-settings-section="appearance" type="button">
+                <span>Apparence</span>
+                <small>Fond, cartes, icones</small>
+              </button>
+              <button class="settings-nav-item" data-settings-section="shortcuts" type="button">
+                <span>Raccourcis</span>
+                <small>Ouverture et actions</small>
+              </button>
+              <button class="settings-nav-item" data-settings-section="language" type="button">
+                <span>Langue</span>
+                <small>Pays et traduction</small>
+              </button>
+            </nav>
+
+            <section class="settings-main">
+              <header class="settings-header">
+                <div>
+                  <strong id="demo-settings-title">Apparence</strong>
+                  <span id="demo-settings-subtitle">Ajuste le style de cette demo.</span>
+                </div>
+                <button id="demo-settings-close" class="settings-close" aria-label="Fermer" type="button">&times;</button>
+              </header>
+
+              <div class="settings-page is-active" data-settings-page="appearance">
+                <section class="settings-block">
+                  <h2>Fond de la fenetre</h2>
+                  <p>Ces reglages changent vraiment la demo, comme dans Nova.</p>
+                  <div class="swatch-grid">
+                    <button class="swatch-tile is-selected" style="--swatch:#101114" data-demo-theme="graphite" type="button">
+                      <span></span>
+                      <strong>Graphite</strong>
+                    </button>
+                    <button class="swatch-tile" style="--swatch:#111827" data-demo-theme="midnight" type="button">
+                      <span></span>
+                      <strong>Noir bleu</strong>
+                    </button>
+                    <button class="swatch-tile" style="--swatch:#171717" data-demo-theme="matte" type="button">
+                      <span></span>
+                      <strong>Mat</strong>
+                    </button>
+                  </div>
+                </section>
+
+                <section class="settings-block">
+                  <h2>Cartes des applications</h2>
+                  <div class="setting-row">
+                    <label>Taille des icones</label>
+                    <input id="demo-icon-size" type="range" min="46" max="72" value="54" aria-label="Taille des icones demo">
+                  </div>
+                  <div class="setting-row">
+                    <label>Densite</label>
+                    <div class="segmented">
+                      <button data-demo-density="compact" type="button">Compact</button>
+                      <button class="is-selected" data-demo-density="normal" type="button">Normal</button>
+                      <button data-demo-density="large" type="button">Large</button>
+                    </div>
+                  </div>
+                </section>
               </div>
-            </aside>
-          </div>
 
-          <div class="app-demo-footer">
-            <span>Alt + Space</span>
-            <p id="demo-toast">Demo locale : aucune vraie application n'est ouverte.</p>
-            <span>Tab pour IA</span>
-          </div>
-        </div>
+              <div class="settings-page" data-settings-page="shortcuts">
+                <section class="settings-block">
+                  <h2>Ouverture rapide</h2>
+                  <div class="shortcut-list">
+                    <div><span>Afficher / masquer Nova</span><span class="shortcut-keys"><kbd>Alt</kbd><kbd>N</kbd></span><button type="button">Demo</button></div>
+                    <div><span>Ouvrir la selection</span><span class="shortcut-keys"><kbd>Enter</kbd></span><button type="button">Demo</button></div>
+                    <div><span>Retour accueil</span><span class="shortcut-keys"><kbd>Esc</kbd></span><button type="button">Demo</button></div>
+                  </div>
+                </section>
+              </div>
 
-        <div class="demo-notes">
-          <article>
-            <strong>Vrai rendu d'app</strong>
-            <p>Le cadre reprend la logique de Nova : navigation, recherche, resultats, details et actions.</p>
-          </article>
-          <article>
-            <strong>Zero risque</strong>
-            <p>Les apps sont inventees pour la vitrine. Le site ne lit pas ton PC et ne lance aucun programme.</p>
-          </article>
-          <article>
-            <strong>Parfait pour vendre le projet</strong>
-            <p>Les visiteurs comprennent directement a quoi ressemble Nova avant de telecharger.</p>
-          </article>
+              <div class="settings-page" data-settings-page="language">
+                <section class="settings-block">
+                  <h2>Langue automatique</h2>
+                  <p id="demo-detected-language">Langue detectee : Francais</p>
+                  <button class="language-system-button is-selected" type="button" data-demo-locale="fr">Utiliser la langue du systeme</button>
+                </section>
+                <section class="settings-block">
+                  <h2>Choisir une langue</h2>
+                  <input id="demo-language-search" class="language-search" type="search" autocomplete="off" spellcheck="false" placeholder="Rechercher une langue...">
+                  <div id="demo-language-list" class="language-list" role="listbox" aria-label="Langues demo"></div>
+                </section>
+              </div>
+            </section>
+          </aside>
+
+          <div id="demo-toast" class="toast" role="status" aria-live="polite"></div>
         </div>
       </section>
 
