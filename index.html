@@ -47,13 +47,35 @@
         <strong>Nova Command</strong>
       </a>
       <nav aria-label="Navigation principale">
-        <a href="#demo">Demo</a>
-        <a href="#features">Fonctions</a>
-        <a href="#download">Download</a>
-        <a href="#install">Installer</a>
+        <a href="#demo" data-site-i18n="navDemo">Demo</a>
+        <a href="#features" data-site-i18n="navFeatures">Fonctions</a>
+        <a href="#download" data-site-i18n="navDownload">Download</a>
+        <a href="#install" data-site-i18n="navInstall">Installer</a>
+        <button id="site-settings-button" class="site-settings-button" type="button" data-site-i18n="navSettings">Parametres</button>
       </nav>
-      <a class="top-download" href="https://github.com/strideur/strideur.github.io/releases/download/v1.0.0/Nova-Command-portable.zip">Telecharger</a>
+      <a class="top-download" href="https://github.com/strideur/strideur.github.io/releases/download/v1.0.0/Nova-Command-portable.zip" data-site-i18n="topDownload">Telecharger</a>
     </header>
+
+    <aside id="site-settings-panel" class="site-settings-panel" hidden aria-label="Parametres du site">
+      <div class="site-settings-card">
+        <header>
+          <div>
+            <strong data-site-i18n="siteSettingsTitle">Parametres du site</strong>
+            <span data-site-i18n="siteSettingsSub">Change uniquement la langue du site.</span>
+          </div>
+          <button id="site-settings-close" type="button" aria-label="Fermer">&times;</button>
+        </header>
+        <div class="site-language-grid">
+          <button class="is-selected" type="button" data-site-locale="fr">Francais <span>FR</span></button>
+          <button type="button" data-site-locale="en">English <span>EN</span></button>
+          <button type="button" data-site-locale="es">Espanol <span>ES</span></button>
+          <button type="button" data-site-locale="de">Deutsch <span>DE</span></button>
+          <button type="button" data-site-locale="it">Italiano <span>IT</span></button>
+          <button type="button" data-site-locale="pt">Portugues <span>PT</span></button>
+          <button type="button" data-site-locale="nl">Nederlands <span>NL</span></button>
+        </div>
+      </div>
+    </aside>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
@@ -63,22 +85,22 @@
           <div class="hero-content">
             <p class="eyebrow">Launcher Windows + Assistant IA</p>
             <h1 id="hero-title">Nova Command</h1>
-            <p class="hero-copy">Une commande centrale pour ouvrir tes apps, lancer tes jeux, chercher sur le web, calculer et parler a Nova Assistant sans quitter ton flow.</p>
+            <p class="hero-copy" data-site-i18n="heroCopy">Une commande centrale pour ouvrir tes apps, lancer tes jeux, chercher sur le web, calculer et parler a Nova Assistant sans quitter ton flow.</p>
             <div class="hero-actions">
-              <a class="primary-action" href="https://github.com/strideur/strideur.github.io/releases/download/v1.0.0/Nova-Command-portable.zip">Telecharger pour Windows</a>
-              <a class="secondary-action" href="#demo">Essayer la demo</a>
+              <a class="primary-action" href="https://github.com/strideur/strideur.github.io/releases/download/v1.0.0/Nova-Command-portable.zip" data-site-i18n="downloadWindows">Telecharger pour Windows</a>
+              <a class="secondary-action" href="#demo" data-site-i18n="tryDemo">Essayer la demo</a>
             </div>
             <dl class="hero-facts" aria-label="Informations de telechargement">
               <div>
-                <dt>Version</dt>
+                <dt data-site-i18n="factVersion">Version</dt>
                 <dd>1.0.0 portable</dd>
               </div>
               <div>
-                <dt>Systeme</dt>
+                <dt data-site-i18n="factSystem">Systeme</dt>
                 <dd>Windows 10 / 11</dd>
               </div>
               <div>
-                <dt>Taille</dt>
+                <dt data-site-i18n="factSize">Taille</dt>
                 <dd>143 Mo</dd>
               </div>
             </dl>
@@ -127,8 +149,8 @@
       <section id="demo" class="demo-section" aria-labelledby="demo-title">
         <div class="section-heading">
           <p class="eyebrow">Demo interactive</p>
-          <h2 id="demo-title">Nova directement dans le site</h2>
-          <p>Un cadre fictif qui montre l'app comme elle serait ouverte sur Windows. Tu peux cliquer, chercher et changer de mode, mais rien ne s'ouvre vraiment.</p>
+          <h2 id="demo-title" data-site-i18n="demoTitle">Nova directement dans le site</h2>
+          <p data-site-i18n="demoBody">Un cadre fictif qui montre l'app comme elle serait ouverte sur Windows. Tu peux cliquer, chercher et changer de mode, mais rien ne s'ouvre vraiment.</p>
         </div>
 
         <div class="nova-live-demo" id="nova-demo" data-theme="graphite">
@@ -164,33 +186,43 @@
 
             <section class="content">
               <div id="demo-calc-card" class="answer-card calc-card" hidden>
-                <span class="answer-kicker">Calculator</span>
+                <span class="answer-kicker" data-demo-i18n="calculator">Calculator</span>
                 <div class="answer-row">
                   <strong id="demo-calc-expression"></strong>
                   <span>&rarr;</span>
                   <strong id="demo-calc-result"></strong>
                 </div>
-                <small>Entree copie le resultat</small>
+                <small data-demo-i18n="calcHint">Entree copie le resultat</small>
+              </div>
+
+              <div id="demo-time-card" class="answer-card time-card" hidden>
+                <span class="answer-kicker" data-demo-i18n="timeTitle">Heure</span>
+                <div class="answer-row">
+                  <strong id="demo-time-expression"></strong>
+                  <span>&rarr;</span>
+                  <strong id="demo-time-result"></strong>
+                </div>
+                <small data-demo-i18n="timeHint">Entree copie l'heure formatee</small>
               </div>
 
               <button id="demo-web-card" class="answer-card web-card" type="button" hidden>
-                <span class="answer-kicker">Recherche web</span>
+                <span class="answer-kicker" data-demo-i18n="webSearch">Recherche web</span>
                 <strong id="demo-web-query"></strong>
-                <small>Navigateur par defaut - simulation</small>
+                <small data-demo-i18n="webBrowser">Navigateur par defaut - simulation</small>
               </button>
 
               <section id="demo-ai-panel" class="ai-panel" hidden>
                 <header class="ai-panel-header">
                   <div>
-                    <span class="answer-kicker">Mode IA</span>
-                    <strong>Parle a Nova Assistant</strong>
+                    <span class="answer-kicker" data-demo-i18n="aiMode">Mode IA</span>
+                    <strong data-demo-i18n="aiIntro">Parle a Nova Assistant</strong>
                   </div>
-                  <button id="demo-ai-reset" type="button">Nouvelle discussion</button>
+                  <button id="demo-ai-reset" type="button" data-demo-i18n="newChat">Nouvelle discussion</button>
                 </header>
                 <div class="ai-workspace">
                   <aside class="ai-conversations" aria-label="Conversations demo">
                     <div class="ai-conversations-header">
-                      <strong>Projets</strong>
+                      <strong data-demo-i18n="projects">Projets</strong>
                       <button type="button">+</button>
                     </div>
                     <div class="ai-conversation-list">
@@ -207,7 +239,7 @@
                   <div id="demo-ai-messages" class="ai-messages" aria-live="polite">
                     <article class="ai-message assistant">
                       <strong>NOVA ASSISTANT</strong>
-                      <p>Je peux simuler l'ouverture d'apps, les recherches web et les reglages, sans toucher a ton PC.</p>
+                      <p data-demo-i18n="aiWelcome">Je peux simuler l'ouverture d'apps, les recherches web et les reglages, sans toucher a ton PC.</p>
                     </article>
                   </div>
                 </div>
@@ -222,7 +254,7 @@
 
             <footer class="bottombar">
               <button id="demo-settings-button" class="settings-button" title="Parametres" aria-label="Parametres" type="button">&#9881;</button>
-              <span id="demo-selection-hint">Selectionnez une application</span>
+              <span id="demo-selection-hint" data-demo-i18n="select">Selectionnez une application</span>
               <span class="bottombar-hints">
                 <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> Naviguer</span>
                 <span><kbd>Shift</kbd> Multi</span>
@@ -249,15 +281,15 @@
               </div>
               <button class="settings-nav-item is-active" data-settings-section="appearance" type="button">
                 <span>Apparence</span>
-                <small>Fond, cartes, icones</small>
+                <small data-demo-i18n="appearanceSmall">Fond, cartes, icones</small>
               </button>
               <button class="settings-nav-item" data-settings-section="shortcuts" type="button">
                 <span>Raccourcis</span>
-                <small>Ouverture et actions</small>
+                <small data-demo-i18n="shortcutsSmall">Ouverture et actions</small>
               </button>
               <button class="settings-nav-item" data-settings-section="language" type="button">
                 <span>Langue</span>
-                <small>Pays et traduction</small>
+                <small data-demo-i18n="languageSmall">Pays et traduction</small>
               </button>
             </nav>
 
@@ -320,13 +352,13 @@
 
               <div class="settings-page" data-settings-page="language">
                 <section class="settings-block">
-                  <h2>Langue automatique</h2>
-                  <p id="demo-detected-language">Langue detectee : Francais</p>
-                  <button class="language-system-button is-selected" type="button" data-demo-locale="fr">Utiliser la langue du systeme</button>
+                  <h2 data-demo-i18n="autoLanguage">Langue automatique</h2>
+                  <p id="demo-detected-language" data-demo-i18n="detectedLanguage">Langue detectee : Francais</p>
+                  <button class="language-system-button is-selected" type="button" data-demo-locale="fr" data-demo-i18n="useSystemLanguage">Utiliser la langue du systeme</button>
                 </section>
                 <section class="settings-block">
-                  <h2>Choisir une langue</h2>
-                  <input id="demo-language-search" class="language-search" type="search" autocomplete="off" spellcheck="false" placeholder="Rechercher une langue...">
+                  <h2 data-demo-i18n="chooseLanguage">Choisir une langue</h2>
+                  <input id="demo-language-search" class="language-search" type="search" autocomplete="off" spellcheck="false" placeholder="Rechercher une langue..." data-demo-placeholder="languageSearch">
                   <div id="demo-language-list" class="language-list" role="listbox" aria-label="Langues demo"></div>
                 </section>
               </div>
@@ -388,7 +420,7 @@
         <div class="download-panel">
           <strong>Nova-Command-portable.zip</strong>
           <span>SHA-256</span>
-          <code>B7B1A62A2554C3DAEA20CFBC65E503F22278259CC196E43E50A33F66100B5E85</code>
+          <code>A0883196A41189B1A208726AF26783FC9E4B5E91956DAA064CE0C3DFEF37E7FA</code>
           <a class="primary-action" href="https://github.com/strideur/strideur.github.io/releases/download/v1.0.0/Nova-Command-portable.zip">Telecharger le ZIP</a>
         </div>
       </section>

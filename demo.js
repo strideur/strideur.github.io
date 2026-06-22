@@ -15,6 +15,9 @@ const settingsPages = [...demoRoot.querySelectorAll(".settings-page")];
 const calcCard = demoRoot.querySelector("#demo-calc-card");
 const calcExpression = demoRoot.querySelector("#demo-calc-expression");
 const calcResult = demoRoot.querySelector("#demo-calc-result");
+const timeCard = demoRoot.querySelector("#demo-time-card");
+const timeExpression = demoRoot.querySelector("#demo-time-expression");
+const timeResult = demoRoot.querySelector("#demo-time-result");
 const webCard = demoRoot.querySelector("#demo-web-card");
 const webQuery = demoRoot.querySelector("#demo-web-query");
 const aiPanel = demoRoot.querySelector("#demo-ai-panel");
@@ -58,7 +61,27 @@ const labels = {
     blocked: "Simulation seulement : aucune vraie app n'est ouverte depuis le site.",
     web: "Recherche web simulee",
     ai: "Mode IA demo active",
-    calc: "Resultat copie dans la vraie app"
+    calc: "Resultat copie dans la vraie app",
+    timeTitle: "Heure",
+    timeHint: "Entree copie l'heure formatee",
+    timeCopied: "Heure copiee dans la vraie app",
+    suggestions: "Suggestions",
+    applications: "Applications",
+    games: "Jeux",
+    appearanceSub: "Ajuste le style de cette demo.",
+    shortcutsSub: "Apercu des touches comme dans Nova.",
+    languageSub: "Change les textes principaux de la demo.",
+    appearanceSmall: "Fond, cartes, icones",
+    shortcutsSmall: "Ouverture et actions",
+    languageSmall: "Pays et traduction",
+    autoLanguage: "Langue automatique",
+    detectedLanguage: "Langue detectee : Francais",
+    useSystemLanguage: "Utiliser la langue du systeme",
+    chooseLanguage: "Choisir une langue",
+    languageSearch: "Rechercher une langue...",
+    calculator: "Calculatrice", calcHint: "Entree copie le resultat", webSearch: "Recherche web", webBrowser: "Navigateur par defaut - simulation",
+    aiMode: "Mode IA", aiIntro: "Parle a Nova Assistant", newChat: "Nouvelle discussion", projects: "Projets",
+    aiWelcome: "Je peux simuler l'ouverture d'apps, les recherches web et les reglages, sans toucher a ton PC."
   },
   en: {
     placeholder: "Search an app, game, calculation or the web...",
@@ -76,7 +99,27 @@ const labels = {
     blocked: "Demo only: no real application is opened from the website.",
     web: "Simulated web search",
     ai: "Demo AI mode enabled",
-    calc: "Result copied in the real app"
+    calc: "Result copied in the real app",
+    timeTitle: "Time",
+    timeHint: "Enter copies the formatted time",
+    timeCopied: "Time copied in the real app",
+    suggestions: "Suggestions",
+    applications: "Applications",
+    games: "Games",
+    appearanceSub: "Tune this demo style.",
+    shortcutsSub: "Shortcut preview like Nova.",
+    languageSub: "Change the main demo text.",
+    appearanceSmall: "Background, cards, icons",
+    shortcutsSmall: "Launch and actions",
+    languageSmall: "Country and translation",
+    autoLanguage: "Automatic language",
+    detectedLanguage: "Detected language: English",
+    useSystemLanguage: "Use system language",
+    chooseLanguage: "Choose a language",
+    languageSearch: "Search a language...",
+    calculator: "Calculator", calcHint: "Enter copies the result", webSearch: "Web search", webBrowser: "Default browser - simulation",
+    aiMode: "AI mode", aiIntro: "Talk to Nova Assistant", newChat: "New chat", projects: "Projects",
+    aiWelcome: "I can simulate app launches, web searches and settings without touching your PC."
   },
   es: {
     placeholder: "Buscar una app, juego, calculo o web...",
@@ -94,7 +137,27 @@ const labels = {
     blocked: "Solo demo: ninguna app real se abre desde el sitio.",
     web: "Busqueda web simulada",
     ai: "Modo IA demo activo",
-    calc: "Resultado copiado en la app real"
+    calc: "Resultado copiado en la app real",
+    timeTitle: "Hora",
+    timeHint: "Enter copia la hora formateada",
+    timeCopied: "Hora copiada en la app real",
+    suggestions: "Sugerencias",
+    applications: "Aplicaciones",
+    games: "Juegos",
+    appearanceSub: "Ajusta el estilo de esta demo.",
+    shortcutsSub: "Vista previa de atajos como Nova.",
+    languageSub: "Cambia los textos principales de la demo.",
+    appearanceSmall: "Fondo, tarjetas, iconos",
+    shortcutsSmall: "Apertura y acciones",
+    languageSmall: "Pais y traduccion",
+    autoLanguage: "Idioma automatico",
+    detectedLanguage: "Idioma detectado: Espanol",
+    useSystemLanguage: "Usar idioma del sistema",
+    chooseLanguage: "Elegir idioma",
+    languageSearch: "Buscar idioma...",
+    calculator: "Calculadora", calcHint: "Enter copia el resultado", webSearch: "Busqueda web", webBrowser: "Navegador predeterminado - simulacion",
+    aiMode: "Modo IA", aiIntro: "Habla con Nova Assistant", newChat: "Nueva conversacion", projects: "Proyectos",
+    aiWelcome: "Puedo simular aperturas de apps, busquedas web y ajustes sin tocar tu PC."
   },
   de: {
     placeholder: "App, Spiel, Rechnung oder Web suchen...",
@@ -112,7 +175,27 @@ const labels = {
     blocked: "Nur Demo: keine echte App wird von der Website geoeffnet.",
     web: "Simulierte Websuche",
     ai: "Demo KI-Modus aktiv",
-    calc: "Ergebnis in der echten App kopiert"
+    calc: "Ergebnis in der echten App kopiert",
+    timeTitle: "Uhrzeit",
+    timeHint: "Enter kopiert die formatierte Uhrzeit",
+    timeCopied: "Uhrzeit in der echten App kopiert",
+    suggestions: "Vorschlaege",
+    applications: "Anwendungen",
+    games: "Spiele",
+    appearanceSub: "Passe diesen Demo-Stil an.",
+    shortcutsSub: "Tastenkurzel-Vorschau wie in Nova.",
+    languageSub: "Aendere die wichtigsten Demo-Texte.",
+    appearanceSmall: "Hintergrund, Karten, Icons",
+    shortcutsSmall: "Start und Aktionen",
+    languageSmall: "Land und Uebersetzung",
+    autoLanguage: "Automatische Sprache",
+    detectedLanguage: "Erkannte Sprache: Deutsch",
+    useSystemLanguage: "Systemsprache verwenden",
+    chooseLanguage: "Sprache waehlen",
+    languageSearch: "Sprache suchen...",
+    calculator: "Rechner", calcHint: "Enter kopiert das Ergebnis", webSearch: "Websuche", webBrowser: "Standardbrowser - Simulation",
+    aiMode: "KI-Modus", aiIntro: "Sprich mit Nova Assistant", newChat: "Neuer Chat", projects: "Projekte",
+    aiWelcome: "Ich kann App-Starts, Websuchen und Einstellungen simulieren, ohne deinen PC zu beruehren."
   },
   it: {
     placeholder: "Cerca app, gioco, calcolo o web...",
@@ -130,7 +213,27 @@ const labels = {
     blocked: "Solo demo: nessuna app reale viene aperta dal sito.",
     web: "Ricerca web simulata",
     ai: "Modalita IA demo attiva",
-    calc: "Risultato copiato nell'app reale"
+    calc: "Risultato copiato nell'app reale",
+    timeTitle: "Ora",
+    timeHint: "Enter copia l'ora formattata",
+    timeCopied: "Ora copiata nell'app reale",
+    suggestions: "Suggerimenti",
+    applications: "Applicazioni",
+    games: "Giochi",
+    appearanceSub: "Regola lo stile di questa demo.",
+    shortcutsSub: "Anteprima scorciatoie come Nova.",
+    languageSub: "Cambia i testi principali della demo.",
+    appearanceSmall: "Sfondo, schede, icone",
+    shortcutsSmall: "Apertura e azioni",
+    languageSmall: "Paese e traduzione",
+    autoLanguage: "Lingua automatica",
+    detectedLanguage: "Lingua rilevata: Italiano",
+    useSystemLanguage: "Usa lingua di sistema",
+    chooseLanguage: "Scegli lingua",
+    languageSearch: "Cerca lingua...",
+    calculator: "Calcolatrice", calcHint: "Enter copia il risultato", webSearch: "Ricerca web", webBrowser: "Browser predefinito - simulazione",
+    aiMode: "Modo IA", aiIntro: "Parla con Nova Assistant", newChat: "Nuova chat", projects: "Progetti",
+    aiWelcome: "Posso simulare apertura di app, ricerche web e impostazioni senza toccare il tuo PC."
   },
   pt: {
     placeholder: "Pesquisar app, jogo, calculo ou web...",
@@ -148,7 +251,27 @@ const labels = {
     blocked: "Apenas demo: nenhum app real e aberto pelo site.",
     web: "Pesquisa web simulada",
     ai: "Modo IA demo ativo",
-    calc: "Resultado copiado no app real"
+    calc: "Resultado copiado no app real",
+    timeTitle: "Hora",
+    timeHint: "Enter copia a hora formatada",
+    timeCopied: "Hora copiada no app real",
+    suggestions: "Sugestoes",
+    applications: "Aplicativos",
+    games: "Jogos",
+    appearanceSub: "Ajuste o estilo desta demo.",
+    shortcutsSub: "Previa de atalhos como no Nova.",
+    languageSub: "Altere os textos principais da demo.",
+    appearanceSmall: "Fundo, cards, icones",
+    shortcutsSmall: "Abertura e acoes",
+    languageSmall: "Pais e traducao",
+    autoLanguage: "Idioma automatico",
+    detectedLanguage: "Idioma detectado: Portugues",
+    useSystemLanguage: "Usar idioma do sistema",
+    chooseLanguage: "Escolher idioma",
+    languageSearch: "Pesquisar idioma...",
+    calculator: "Calculadora", calcHint: "Enter copia o resultado", webSearch: "Pesquisa web", webBrowser: "Navegador padrao - simulacao",
+    aiMode: "Modo IA", aiIntro: "Fale com Nova Assistant", newChat: "Nova conversa", projects: "Projetos",
+    aiWelcome: "Posso simular abertura de apps, pesquisas web e definicoes sem tocar no seu PC."
   },
   nl: {
     placeholder: "Zoek app, game, berekening of web...",
@@ -166,7 +289,81 @@ const labels = {
     blocked: "Alleen demo: er wordt geen echte app geopend vanaf de site.",
     web: "Gesimuleerde webzoekopdracht",
     ai: "Demo AI-modus actief",
-    calc: "Resultaat gekopieerd in de echte app"
+    calc: "Resultaat gekopieerd in de echte app",
+    timeTitle: "Tijd",
+    timeHint: "Enter kopieert de opgemaakte tijd",
+    timeCopied: "Tijd gekopieerd in de echte app",
+    suggestions: "Suggesties",
+    applications: "Applicaties",
+    games: "Games",
+    appearanceSub: "Pas deze demo-stijl aan.",
+    shortcutsSub: "Sneltoetsvoorbeeld zoals Nova.",
+    languageSub: "Wijzig de belangrijkste demoteksten.",
+    appearanceSmall: "Achtergrond, kaarten, iconen",
+    shortcutsSmall: "Starten en acties",
+    languageSmall: "Land en vertaling",
+    autoLanguage: "Automatische taal",
+    detectedLanguage: "Gedetecteerde taal: Nederlands",
+    useSystemLanguage: "Systeemtaal gebruiken",
+    chooseLanguage: "Kies een taal",
+    languageSearch: "Zoek een taal...",
+    calculator: "Rekenmachine", calcHint: "Enter kopieert het resultaat", webSearch: "Web zoeken", webBrowser: "Standaardbrowser - simulatie",
+    aiMode: "AI-modus", aiIntro: "Praat met Nova Assistant", newChat: "Nieuwe chat", projects: "Projecten",
+    aiWelcome: "Ik kan app-starts, webzoekopdrachten en instellingen simuleren zonder je PC aan te raken."
+  },
+  ja: {
+    placeholder: "アプリ、ゲーム、計算、Webを検索...",
+    all: "すべて", app: "アプリ", game: "ゲーム", recent: "最近",
+    status: "デモPC - {count}件", select: "アプリを選択", settings: "設定",
+    appearance: "外観", shortcuts: "ショートカット", language: "言語",
+    simulated: "{name}を選択しました。実際のアプリではEnterで開きます。",
+    blocked: "デモのみです。サイトから実際のアプリは開きません。",
+    web: "Web検索のデモ", ai: "AIデモモード", calc: "実際のアプリでは結果をコピーします",
+    timeTitle: "時刻", timeHint: "Enterで整形された時刻をコピー", timeCopied: "実際のアプリでは時刻をコピーします",
+    suggestions: "候補", applications: "アプリ", games: "ゲーム",
+    appearanceSub: "このデモのスタイルを調整します。", shortcutsSub: "Nova風のショートカット表示。", languageSub: "デモの主なテキストを変更します。",
+    appearanceSmall: "背景、カード、アイコン", shortcutsSmall: "起動と操作", languageSmall: "国と言語",
+    autoLanguage: "自動言語", detectedLanguage: "検出された言語: 日本語", useSystemLanguage: "システム言語を使用",
+    chooseLanguage: "言語を選択", languageSearch: "言語を検索...",
+    calculator: "計算機", calcHint: "Enterで結果をコピー", webSearch: "Web検索", webBrowser: "既定ブラウザー - デモ",
+    aiMode: "AIモード", aiIntro: "Nova Assistantに話す", newChat: "新しいチャット", projects: "プロジェクト",
+    aiWelcome: "PCに触れずに、アプリ起動、Web検索、設定をシミュレートできます。"
+  },
+  ko: {
+    placeholder: "앱, 게임, 계산 또는 웹 검색...",
+    all: "전체", app: "앱", game: "게임", recent: "최근",
+    status: "데모 PC - {count}개", select: "앱 선택", settings: "설정",
+    appearance: "모양", shortcuts: "단축키", language: "언어",
+    simulated: "{name} 선택됨. 실제 앱에서는 Enter로 열립니다.",
+    blocked: "데모 전용입니다. 사이트에서 실제 앱을 열지 않습니다.",
+    web: "웹 검색 데모", ai: "AI 데모 모드", calc: "실제 앱에서는 결과가 복사됩니다",
+    timeTitle: "시간", timeHint: "Enter로 형식화된 시간 복사", timeCopied: "실제 앱에서는 시간이 복사됩니다",
+    suggestions: "추천", applications: "앱", games: "게임",
+    appearanceSub: "이 데모 스타일을 조정합니다.", shortcutsSub: "Nova처럼 단축키를 미리 봅니다.", languageSub: "데모 주요 텍스트를 변경합니다.",
+    appearanceSmall: "배경, 카드, 아이콘", shortcutsSmall: "실행과 동작", languageSmall: "국가와 번역",
+    autoLanguage: "자동 언어", detectedLanguage: "감지된 언어: 한국어", useSystemLanguage: "시스템 언어 사용",
+    chooseLanguage: "언어 선택", languageSearch: "언어 검색...",
+    calculator: "계산기", calcHint: "Enter로 결과 복사", webSearch: "웹 검색", webBrowser: "기본 브라우저 - 데모",
+    aiMode: "AI 모드", aiIntro: "Nova Assistant와 대화", newChat: "새 채팅", projects: "프로젝트",
+    aiWelcome: "PC를 건드리지 않고 앱 실행, 웹 검색, 설정을 시뮬레이션할 수 있습니다."
+  },
+  ar: {
+    placeholder: "ابحث عن تطبيق أو لعبة أو حساب أو ويب...",
+    all: "الكل", app: "تطبيقات", game: "ألعاب", recent: "الأخيرة",
+    status: "جهاز تجريبي - {count} عناصر", select: "اختر تطبيقا", settings: "الإعدادات",
+    appearance: "المظهر", shortcuts: "الاختصارات", language: "اللغة",
+    simulated: "تم تحديد {name}. في التطبيق الحقيقي يفتحه Enter.",
+    blocked: "هذه تجربة فقط. لا يتم فتح تطبيقات حقيقية من الموقع.",
+    web: "بحث ويب تجريبي", ai: "وضع الذكاء التجريبي", calc: "في التطبيق الحقيقي يتم نسخ النتيجة",
+    timeTitle: "الوقت", timeHint: "Enter ينسخ الوقت المنسق", timeCopied: "في التطبيق الحقيقي يتم نسخ الوقت",
+    suggestions: "اقتراحات", applications: "تطبيقات", games: "ألعاب",
+    appearanceSub: "تعديل شكل هذا العرض.", shortcutsSub: "معاينة الاختصارات مثل Nova.", languageSub: "تغيير النصوص الرئيسية للعرض.",
+    appearanceSmall: "الخلفية والبطاقات والأيقونات", shortcutsSmall: "الفتح والإجراءات", languageSmall: "البلد والترجمة",
+    autoLanguage: "لغة تلقائية", detectedLanguage: "اللغة المكتشفة: العربية", useSystemLanguage: "استخدام لغة النظام",
+    chooseLanguage: "اختر لغة", languageSearch: "ابحث عن لغة...",
+    calculator: "آلة حاسبة", calcHint: "Enter ينسخ النتيجة", webSearch: "بحث ويب", webBrowser: "المتصفح الافتراضي - تجربة",
+    aiMode: "وضع الذكاء", aiIntro: "تحدث مع Nova Assistant", newChat: "محادثة جديدة", projects: "المشاريع",
+    aiWelcome: "يمكنني محاكاة فتح التطبيقات وبحث الويب والإعدادات بدون لمس جهازك."
   }
 };
 
@@ -183,8 +380,61 @@ const languages = [
   ["ar", "Arabic", "Arabic"]
 ];
 
+const siteTranslations = {
+  fr: {
+    navDemo: "Demo", navFeatures: "Fonctions", navDownload: "Download", navInstall: "Installer", navSettings: "Parametres",
+    topDownload: "Telecharger", siteSettingsTitle: "Parametres du site", siteSettingsSub: "Change uniquement la langue du site.",
+    heroCopy: "Une commande centrale pour ouvrir tes apps, lancer tes jeux, chercher sur le web, calculer et parler a Nova Assistant sans quitter ton flow.",
+    downloadWindows: "Telecharger pour Windows", tryDemo: "Essayer la demo", factVersion: "Version", factSystem: "Systeme", factSize: "Taille",
+    demoTitle: "Nova directement dans le site", demoBody: "Un cadre fictif qui montre l'app comme elle serait ouverte sur Windows. Tu peux cliquer, chercher et changer de mode, mais rien ne s'ouvre vraiment."
+  },
+  en: {
+    navDemo: "Demo", navFeatures: "Features", navDownload: "Download", navInstall: "Install", navSettings: "Settings",
+    topDownload: "Download", siteSettingsTitle: "Site settings", siteSettingsSub: "Only changes the website language.",
+    heroCopy: "One central command to open apps, launch games, search the web, calculate and talk to Nova Assistant without breaking your flow.",
+    downloadWindows: "Download for Windows", tryDemo: "Try the demo", factVersion: "Version", factSystem: "System", factSize: "Size",
+    demoTitle: "Nova directly inside the site", demoBody: "A fictional frame showing the app as it would appear on Windows. You can click, search and switch modes, but nothing really opens."
+  },
+  es: {
+    navDemo: "Demo", navFeatures: "Funciones", navDownload: "Download", navInstall: "Instalar", navSettings: "Ajustes",
+    topDownload: "Descargar", siteSettingsTitle: "Ajustes del sitio", siteSettingsSub: "Solo cambia el idioma del sitio.",
+    heroCopy: "Un comando central para abrir apps, lanzar juegos, buscar en la web, calcular y hablar con Nova Assistant sin romper tu flujo.",
+    downloadWindows: "Descargar para Windows", tryDemo: "Probar la demo", factVersion: "Version", factSystem: "Sistema", factSize: "Tamano",
+    demoTitle: "Nova directamente en el sitio", demoBody: "Un marco ficticio que muestra la app como se veria en Windows. Puedes hacer clic, buscar y cambiar de modo, pero nada se abre realmente."
+  },
+  de: {
+    navDemo: "Demo", navFeatures: "Funktionen", navDownload: "Download", navInstall: "Installieren", navSettings: "Einstellungen",
+    topDownload: "Herunterladen", siteSettingsTitle: "Website-Einstellungen", siteSettingsSub: "Aendert nur die Sprache der Website.",
+    heroCopy: "Ein zentraler Befehl zum Oeffnen von Apps, Starten von Spielen, Suchen im Web, Rechnen und Sprechen mit Nova Assistant.",
+    downloadWindows: "Fuer Windows herunterladen", tryDemo: "Demo testen", factVersion: "Version", factSystem: "System", factSize: "Groesse",
+    demoTitle: "Nova direkt auf der Website", demoBody: "Ein fiktiver Rahmen zeigt die App wie unter Windows. Du kannst klicken, suchen und Modi wechseln, aber nichts wird wirklich geoeffnet."
+  },
+  it: {
+    navDemo: "Demo", navFeatures: "Funzioni", navDownload: "Download", navInstall: "Installa", navSettings: "Impostazioni",
+    topDownload: "Scarica", siteSettingsTitle: "Impostazioni sito", siteSettingsSub: "Cambia solo la lingua del sito.",
+    heroCopy: "Un comando centrale per aprire app, avviare giochi, cercare sul web, calcolare e parlare con Nova Assistant senza interrompere il flusso.",
+    downloadWindows: "Scarica per Windows", tryDemo: "Prova la demo", factVersion: "Versione", factSystem: "Sistema", factSize: "Dimensione",
+    demoTitle: "Nova direttamente nel sito", demoBody: "Un riquadro fittizio mostra l'app come su Windows. Puoi cliccare, cercare e cambiare modalita, ma non si apre nulla davvero."
+  },
+  pt: {
+    navDemo: "Demo", navFeatures: "Funcoes", navDownload: "Download", navInstall: "Instalar", navSettings: "Definicoes",
+    topDownload: "Baixar", siteSettingsTitle: "Definicoes do site", siteSettingsSub: "Muda apenas o idioma do site.",
+    heroCopy: "Um comando central para abrir apps, iniciar jogos, pesquisar na web, calcular e falar com o Nova Assistant sem quebrar seu fluxo.",
+    downloadWindows: "Baixar para Windows", tryDemo: "Testar demo", factVersion: "Versao", factSystem: "Sistema", factSize: "Tamanho",
+    demoTitle: "Nova diretamente no site", demoBody: "Um quadro ficticio mostra o app como no Windows. Voce pode clicar, pesquisar e trocar modos, mas nada abre de verdade."
+  },
+  nl: {
+    navDemo: "Demo", navFeatures: "Functies", navDownload: "Download", navInstall: "Installeren", navSettings: "Instellingen",
+    topDownload: "Downloaden", siteSettingsTitle: "Site-instellingen", siteSettingsSub: "Wijzigt alleen de taal van de website.",
+    heroCopy: "Een centrale opdracht om apps te openen, games te starten, op het web te zoeken, te rekenen en met Nova Assistant te praten zonder je flow te breken.",
+    downloadWindows: "Download voor Windows", tryDemo: "Probeer de demo", factVersion: "Versie", factSystem: "Systeem", factSize: "Grootte",
+    demoTitle: "Nova direct in de site", demoBody: "Een fictief venster toont de app zoals op Windows. Je kunt klikken, zoeken en modi wisselen, maar er wordt niets echt geopend."
+  }
+};
+
 let view = "all";
 let locale = "fr";
+let siteLocale = localStorage.getItem("nova.siteLocale") || "fr";
 let selectedId = "";
 let toastTimer = 0;
 
@@ -210,6 +460,19 @@ function safe(text) {
   })[char]);
 }
 
+function applySiteLocale(nextLocale) {
+  siteLocale = siteTranslations[nextLocale] ? nextLocale : "fr";
+  localStorage.setItem("nova.siteLocale", siteLocale);
+  const table = siteTranslations[siteLocale];
+  document.documentElement.lang = siteLocale;
+  document.querySelectorAll("[data-site-i18n]").forEach((node) => {
+    node.textContent = table[node.dataset.siteI18n] || siteTranslations.fr[node.dataset.siteI18n] || node.textContent;
+  });
+  document.querySelectorAll("[data-site-locale]").forEach((button) => {
+    button.classList.toggle("is-selected", button.dataset.siteLocale === siteLocale);
+  });
+}
+
 function calcValue(text) {
   if (!/^[\d\s+\-*/().]+$/.test(text)) return null;
   try {
@@ -220,12 +483,70 @@ function calcValue(text) {
   }
 }
 
+function localeCodeToBcp47(code) {
+  const map = {
+    fr: "fr-FR",
+    en: "en-US",
+    es: "es-ES",
+    de: "de-DE",
+    it: "it-IT",
+    pt: "pt-PT",
+    nl: "nl-NL",
+    ja: "ja-JP",
+    ko: "ko-KR",
+    ar: "ar-SA"
+  };
+  return map[code] || code || "en-US";
+}
+
+function parseTimeQuery(text) {
+  const raw = String(text || "").trim();
+  if (!raw) return null;
+  const normalized = raw
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  let match = normalized.match(/^([01]?\d|2[0-3])(?::([0-5]\d))(?::([0-5]\d))?$/);
+  if (match) return { label: raw, hour: Number(match[1]), minute: Number(match[2]), second: Number(match[3] || 0) };
+
+  match = normalized.match(/^(0?\d|1[0-2])(?:[:. ]([0-5]\d))?(?:[:. ]([0-5]\d))?\s*(am|pm)$/);
+  if (match) {
+    let hour = Number(match[1]) % 12;
+    if (match[4] === "pm") hour += 12;
+    return { label: raw, hour, minute: Number(match[2] || 0), second: Number(match[3] || 0) };
+  }
+
+  match = normalized.match(/^([01]?\d|2[0-3])\s*(?:h|hr|hrs|heure|heures)(?:\s*([0-5]?\d)\s*(?:m|min|minute|minutes)?)?(?:\s*([0-5]?\d)\s*(?:s|sec|secs|seconde|secondes)?)?$/);
+  if (match) return { label: raw, hour: Number(match[1]), minute: Number(match[2] || 0), second: Number(match[3] || 0) };
+
+  match = normalized.match(/^([01]?\d|2[0-3])h([0-5]\d)(?:[:h]([0-5]\d))?$/);
+  if (match) return { label: raw, hour: Number(match[1]), minute: Number(match[2]), second: Number(match[3] || 0) };
+
+  return null;
+}
+
+function formatTimeQuery(text, language = locale) {
+  const parsed = parseTimeQuery(text);
+  if (!parsed) return null;
+  const date = new Date();
+  date.setHours(parsed.hour, parsed.minute, parsed.second, 0);
+  const options = { hour: "numeric", minute: "2-digit" };
+  if (parsed.second) options.second = "2-digit";
+  return {
+    input: parsed.label,
+    output: new Intl.DateTimeFormat(localeCodeToBcp47(language), options).format(date)
+  };
+}
+
 function filteredApps() {
   const query = search.value.trim().toLowerCase();
   if (view === "app") return apps.filter((item) => item[2] === "app");
   if (view === "game") return apps.filter((item) => item[2] === "game");
   if (view === "recent") return apps.filter((item) => item[2] === "recent");
-  if (!query || calcValue(query) !== null || query.includes("/")) return apps;
+  if (!query || calcValue(query) !== null || formatTimeQuery(query) || query.includes("/")) return apps;
   return apps.filter((item) => `${item[0]} ${item[1]} ${item[2]}`.toLowerCase().includes(query));
 }
 
@@ -252,9 +573,11 @@ function sectionFor(title, items) {
 function renderTiles() {
   const query = search.value.trim();
   const calc = calcValue(query);
-  const isWeb = query.includes("/") && calc === null;
+  const time = formatTimeQuery(query);
+  const isWeb = query.includes("/") && calc === null && !time;
 
   calcCard.hidden = calc === null;
+  timeCard.hidden = !time;
   webCard.hidden = !isWeb;
   aiPanel.hidden = true;
   launcher.classList.remove("is-ai-mode");
@@ -265,6 +588,11 @@ function renderTiles() {
     calcResult.textContent = calc;
   }
 
+  if (time) {
+    timeExpression.textContent = time.input;
+    timeResult.textContent = time.output;
+  }
+
   if (isWeb) {
     webQuery.textContent = query.split("/").map((part) => part.trim()).filter(Boolean).slice(0, 2).join(" + ");
   }
@@ -272,9 +600,9 @@ function renderTiles() {
   const items = filteredApps();
   const groups = [];
   if (view === "all") {
-    groups.push(["Suggestions", items.slice(0, 6)]);
-    groups.push(["Applications", apps.filter((item) => item[2] === "app").slice(0, 6)]);
-    groups.push(["Jeux", apps.filter((item) => item[2] === "game").slice(0, 6)]);
+    groups.push([t("suggestions"), items.slice(0, 6)]);
+    groups.push([t("applications"), apps.filter((item) => item[2] === "app").slice(0, 6)]);
+    groups.push([t("games"), apps.filter((item) => item[2] === "game").slice(0, 6)]);
   } else {
     groups.push([tabs.find((tab) => tab.dataset.view === view)?.textContent || "Resultats", items]);
   }
@@ -295,6 +623,7 @@ function openAiMode() {
   launcher.classList.add("is-ai-mode");
   aiPanel.hidden = false;
   calcCard.hidden = true;
+  timeCard.hidden = true;
   webCard.hidden = true;
   aiProvider.hidden = false;
   search.value = search.value || "demande a Nova";
@@ -310,7 +639,7 @@ function sendAiDemoMessage() {
     </article>
     <article class="ai-message assistant">
       <strong>NOVA ASSISTANT</strong>
-      <p>Je peux preparer une action Nova dans la vraie app. Ici, je te montre seulement le rendu pour proteger ton PC.</p>
+      <p>${safe(t("aiWelcome"))}</p>
     </article>
   `);
   aiMessages.scrollTop = aiMessages.scrollHeight;
@@ -319,9 +648,9 @@ function sendAiDemoMessage() {
 
 function selectSettingsPage(page) {
   const titles = {
-    appearance: [t("appearance"), "Ajuste le style de cette demo."],
-    shortcuts: [t("shortcuts"), "Apercu des touches comme dans Nova."],
-    language: [t("language"), "Change les textes principaux de la demo."]
+    appearance: [t("appearance"), t("appearanceSub")],
+    shortcuts: [t("shortcuts"), t("shortcutsSub")],
+    language: [t("language"), t("languageSub")]
   };
   const meta = titles[page] || titles.appearance;
   settingsTitle.textContent = meta[0];
@@ -350,6 +679,12 @@ function renderLanguages() {
 function applyLocale(nextLocale) {
   locale = labels[nextLocale] ? nextLocale : "fr";
   search.placeholder = t("placeholder");
+  demoRoot.querySelectorAll("[data-demo-i18n]").forEach((node) => {
+    node.textContent = t(node.dataset.demoI18n);
+  });
+  demoRoot.querySelectorAll("[data-demo-placeholder]").forEach((node) => {
+    node.setAttribute("placeholder", t(node.dataset.demoPlaceholder));
+  });
   settingsButton.setAttribute("title", t("settings"));
   settingsButton.setAttribute("aria-label", t("settings"));
   const navLabels = { appearance: "appearance", shortcuts: "shortcuts", language: "language" };
@@ -389,6 +724,8 @@ search.addEventListener("keydown", (event) => {
       sendAiDemoMessage();
     } else if (calcValue(search.value.trim()) !== null) {
       showToast(t("calc"));
+    } else if (formatTimeQuery(search.value.trim())) {
+      showToast(t("timeCopied"));
     } else if (search.value.includes("/")) {
       showToast(t("web"));
     } else {
@@ -408,11 +745,12 @@ demoRoot.querySelectorAll(".shortcut-list button").forEach((button) => {
   button.addEventListener("click", () => showToast("Raccourci modifiable dans la vraie app Nova."));
 });
 webCard.addEventListener("click", () => showToast(t("web")));
+timeCard.addEventListener("click", () => showToast(t("timeCopied")));
 demoRoot.querySelector("#demo-ai-reset").addEventListener("click", () => {
   aiMessages.innerHTML = `
     <article class="ai-message assistant">
       <strong>NOVA ASSISTANT</strong>
-      <p>Nouvelle conversation demo. Rien n'est envoye a une IA depuis cette page.</p>
+      <p>${safe(t("aiWelcome"))}</p>
     </article>
   `;
 });
@@ -448,5 +786,24 @@ languageList.addEventListener("click", (event) => {
   showToast(`Langue demo: ${option.dataset.locale.toUpperCase()}`);
 });
 
+const siteSettingsButton = document.querySelector("#site-settings-button");
+const siteSettingsPanel = document.querySelector("#site-settings-panel");
+const siteSettingsClose = document.querySelector("#site-settings-close");
+
+function setSiteSettingsOpen(open) {
+  siteSettingsPanel.hidden = !open;
+  siteSettingsButton.classList.toggle("is-active", open);
+}
+
+siteSettingsButton?.addEventListener("click", () => setSiteSettingsOpen(siteSettingsPanel.hidden));
+siteSettingsClose?.addEventListener("click", () => setSiteSettingsOpen(false));
+siteSettingsPanel?.addEventListener("click", (event) => {
+  if (event.target === siteSettingsPanel) setSiteSettingsOpen(false);
+  const button = event.target.closest("[data-site-locale]");
+  if (!button) return;
+  applySiteLocale(button.dataset.siteLocale);
+});
+
+applySiteLocale(siteLocale);
 applyLocale("fr");
 renderTiles();
