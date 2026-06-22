@@ -1068,6 +1068,7 @@ footer {
   display: grid;
   justify-items: center;
   min-height: 760px;
+  overflow: hidden;
   padding: 28px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 30px;
@@ -1075,8 +1076,85 @@ footer {
     radial-gradient(circle at 48% 30%, rgba(143, 183, 255, 0.13), transparent 35%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.022)),
     rgba(0, 0, 0, 0.24);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 70px rgba(143, 183, 255, 0.05),
+    0 42px 120px rgba(0, 0, 0, 0.42);
   font-family: "Segoe UI Variable", "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
   user-select: none;
+  animation: novaDemoHue 18s ease-in-out infinite alternate;
+}
+
+.nova-live-demo::before,
+.nova-live-demo::after {
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  content: "";
+}
+
+.nova-live-demo::before {
+  z-index: 0;
+  background:
+    radial-gradient(520px 280px at 18% 18%, rgba(157, 242, 208, 0.2), transparent 62%),
+    radial-gradient(440px 320px at 82% 22%, rgba(142, 202, 255, 0.2), transparent 64%),
+    radial-gradient(360px 260px at 68% 82%, rgba(255, 211, 138, 0.13), transparent 62%),
+    conic-gradient(from 150deg at 50% 50%, transparent 0deg, rgba(255, 255, 255, 0.1) 36deg, transparent 86deg, rgba(143, 183, 255, 0.13) 146deg, transparent 230deg, rgba(157, 242, 208, 0.11) 292deg, transparent 360deg);
+  filter: blur(18px) saturate(1.25);
+  opacity: 0.88;
+  transform: scale(1.05);
+  animation: novaLiquidAura 16s ease-in-out infinite alternate;
+}
+
+.nova-live-demo::after {
+  z-index: 1;
+  border-radius: inherit;
+  background:
+    linear-gradient(118deg, transparent 0 34%, rgba(255, 255, 255, 0.18) 35%, transparent 38% 100%),
+    linear-gradient(126deg, transparent 0 64%, rgba(157, 242, 208, 0.28) 65%, transparent 67% 100%),
+    linear-gradient(72deg, transparent 0 72%, rgba(142, 202, 255, 0.2) 73%, transparent 75% 100%),
+    radial-gradient(circle at 12% 30%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 22% 70%, rgba(157, 242, 208, 0.75) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 38% 18%, rgba(255, 255, 255, 0.55) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 54% 78%, rgba(142, 202, 255, 0.75) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 74% 34%, rgba(255, 211, 138, 0.65) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 88% 64%, rgba(255, 255, 255, 0.55) 0 1px, transparent 1.8px);
+  background-size:
+    280% 100%,
+    240% 100%,
+    210% 100%,
+    260px 180px,
+    310px 230px,
+    240px 210px,
+    300px 220px,
+    280px 240px,
+    260px 190px;
+  mix-blend-mode: screen;
+  opacity: 0.46;
+  animation: novaStarField 14s linear infinite, novaShootingLines 7s ease-in-out infinite;
+}
+
+.nova-live-demo .launcher,
+.nova-live-demo .settings-panel,
+.nova-live-demo .toast {
+  z-index: 2;
+}
+
+.nova-live-demo .launcher {
+  animation: novaLauncherGlow 10s ease-in-out infinite alternate;
+}
+
+.nova-live-demo .launcher::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(118deg, rgba(255, 255, 255, 0.14), transparent 18% 76%, rgba(143, 183, 255, 0.09)),
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.12), transparent 28%);
+  content: "";
+  opacity: 0.58;
+  mix-blend-mode: screen;
 }
 
 .nova-live-demo[data-theme="midnight"] {
@@ -1104,6 +1182,7 @@ footer {
 }
 
 .nova-live-demo .launcher {
+  position: relative;
   display: grid;
   grid-template-rows: 34px auto auto 1fr 42px;
   width: min(860px, 100%);
@@ -2033,5 +2112,115 @@ footer {
 
   .nova-live-demo .tabs {
     overflow-x: auto;
+  }
+}
+
+@keyframes novaLiquidAura {
+  0% {
+    background-position: 0% 0%, 100% 10%, 50% 100%, 0% 50%;
+    transform: scale(1.04) rotate(0deg);
+  }
+
+  50% {
+    background-position: 28% 12%, 70% 34%, 56% 72%, 52% 48%;
+    transform: scale(1.08) rotate(1.4deg);
+  }
+
+  100% {
+    background-position: 64% 22%, 34% 52%, 82% 46%, 100% 52%;
+    transform: scale(1.06) rotate(-1deg);
+  }
+}
+
+@keyframes novaStarField {
+  0% {
+    background-position:
+      -140% 0,
+      140% 0,
+      -90% 0,
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+
+  100% {
+    background-position:
+      180% 0,
+      -160% 0,
+      140% 0,
+      260px -180px,
+      -310px 230px,
+      240px 210px,
+      -300px -220px,
+      280px -240px,
+      -260px 190px;
+  }
+}
+
+@keyframes novaShootingLines {
+  0%,
+  18%,
+  100% {
+    opacity: 0.34;
+    filter: blur(0);
+  }
+
+  8% {
+    opacity: 0.68;
+    filter: blur(0.2px);
+  }
+
+  62% {
+    opacity: 0.52;
+  }
+}
+
+@keyframes novaDemoHue {
+  0% {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  35% {
+    border-color: rgba(157, 242, 208, 0.24);
+  }
+
+  70% {
+    border-color: rgba(142, 202, 255, 0.24);
+  }
+
+  100% {
+    border-color: rgba(255, 211, 138, 0.18);
+  }
+}
+
+@keyframes novaLauncherGlow {
+  0% {
+    box-shadow:
+      0 32px 110px rgba(0, 0, 0, 0.68),
+      0 0 0 rgba(157, 242, 208, 0);
+  }
+
+  50% {
+    box-shadow:
+      0 32px 110px rgba(0, 0, 0, 0.68),
+      0 0 46px rgba(143, 183, 255, 0.16);
+  }
+
+  100% {
+    box-shadow:
+      0 32px 110px rgba(0, 0, 0, 0.68),
+      0 0 58px rgba(157, 242, 208, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-live-demo,
+  .nova-live-demo::before,
+  .nova-live-demo::after,
+  .nova-live-demo .launcher {
+    animation: none;
   }
 }
