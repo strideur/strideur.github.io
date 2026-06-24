@@ -62,9 +62,9 @@ const labels = {
     web: "Recherche web simulee",
     ai: "Mode IA demo active",
     calc: "Resultat copie dans la vraie app",
-    timeTitle: "Heure",
-    timeHint: "Entree copie l'heure formatee",
-    timeCopied: "Heure copiee dans la vraie app",
+    timeTitle: "Temps",
+    timeHint: "Entree copie le resultat",
+    timeCopied: "Temps copie dans la vraie app",
     suggestions: "Suggestions",
     applications: "Applications",
     games: "Jeux",
@@ -101,7 +101,7 @@ const labels = {
     ai: "Demo AI mode enabled",
     calc: "Result copied in the real app",
     timeTitle: "Time",
-    timeHint: "Enter copies the formatted time",
+    timeHint: "Enter copies the result",
     timeCopied: "Time copied in the real app",
     suggestions: "Suggestions",
     applications: "Applications",
@@ -138,9 +138,9 @@ const labels = {
     web: "Busqueda web simulada",
     ai: "Modo IA demo activo",
     calc: "Resultado copiado en la app real",
-    timeTitle: "Hora",
-    timeHint: "Enter copia la hora formateada",
-    timeCopied: "Hora copiada en la app real",
+    timeTitle: "Tiempo",
+    timeHint: "Enter copia el resultado",
+    timeCopied: "Tiempo copiado en la app real",
     suggestions: "Sugerencias",
     applications: "Aplicaciones",
     games: "Juegos",
@@ -176,9 +176,9 @@ const labels = {
     web: "Simulierte Websuche",
     ai: "Demo KI-Modus aktiv",
     calc: "Ergebnis in der echten App kopiert",
-    timeTitle: "Uhrzeit",
-    timeHint: "Enter kopiert die formatierte Uhrzeit",
-    timeCopied: "Uhrzeit in der echten App kopiert",
+    timeTitle: "Zeit",
+    timeHint: "Enter kopiert das Ergebnis",
+    timeCopied: "Zeit in der echten App kopiert",
     suggestions: "Vorschlaege",
     applications: "Anwendungen",
     games: "Spiele",
@@ -214,9 +214,9 @@ const labels = {
     web: "Ricerca web simulata",
     ai: "Modalita IA demo attiva",
     calc: "Risultato copiato nell'app reale",
-    timeTitle: "Ora",
-    timeHint: "Enter copia l'ora formattata",
-    timeCopied: "Ora copiata nell'app reale",
+    timeTitle: "Tempo",
+    timeHint: "Enter copia il risultato",
+    timeCopied: "Tempo copiato nell'app reale",
     suggestions: "Suggerimenti",
     applications: "Applicazioni",
     games: "Giochi",
@@ -252,9 +252,9 @@ const labels = {
     web: "Pesquisa web simulada",
     ai: "Modo IA demo ativo",
     calc: "Resultado copiado no app real",
-    timeTitle: "Hora",
-    timeHint: "Enter copia a hora formatada",
-    timeCopied: "Hora copiada no app real",
+    timeTitle: "Tempo",
+    timeHint: "Enter copia o resultado",
+    timeCopied: "Tempo copiado no app real",
     suggestions: "Sugestoes",
     applications: "Aplicativos",
     games: "Jogos",
@@ -291,7 +291,7 @@ const labels = {
     ai: "Demo AI-modus actief",
     calc: "Resultaat gekopieerd in de echte app",
     timeTitle: "Tijd",
-    timeHint: "Enter kopieert de opgemaakte tijd",
+    timeHint: "Enter kopieert het resultaat",
     timeCopied: "Tijd gekopieerd in de echte app",
     suggestions: "Suggesties",
     applications: "Applicaties",
@@ -319,7 +319,7 @@ const labels = {
     simulated: "{name}を選択しました。実際のアプリではEnterで開きます。",
     blocked: "デモのみです。サイトから実際のアプリは開きません。",
     web: "Web検索のデモ", ai: "AIデモモード", calc: "実際のアプリでは結果をコピーします",
-    timeTitle: "時刻", timeHint: "Enterで整形された時刻をコピー", timeCopied: "実際のアプリでは時刻をコピーします",
+    timeTitle: "時間", timeHint: "Enterで結果をコピー", timeCopied: "実際のアプリでは結果をコピーします",
     suggestions: "候補", applications: "アプリ", games: "ゲーム",
     appearanceSub: "このデモのスタイルを調整します。", shortcutsSub: "Nova風のショートカット表示。", languageSub: "デモの主なテキストを変更します。",
     appearanceSmall: "背景、カード、アイコン", shortcutsSmall: "起動と操作", languageSmall: "国と言語",
@@ -337,7 +337,7 @@ const labels = {
     simulated: "{name} 선택됨. 실제 앱에서는 Enter로 열립니다.",
     blocked: "데모 전용입니다. 사이트에서 실제 앱을 열지 않습니다.",
     web: "웹 검색 데모", ai: "AI 데모 모드", calc: "실제 앱에서는 결과가 복사됩니다",
-    timeTitle: "시간", timeHint: "Enter로 형식화된 시간 복사", timeCopied: "실제 앱에서는 시간이 복사됩니다",
+    timeTitle: "시간", timeHint: "Enter로 결과 복사", timeCopied: "실제 앱에서는 결과가 복사됩니다",
     suggestions: "추천", applications: "앱", games: "게임",
     appearanceSub: "이 데모 스타일을 조정합니다.", shortcutsSub: "Nova처럼 단축키를 미리 봅니다.", languageSub: "데모 주요 텍스트를 변경합니다.",
     appearanceSmall: "배경, 카드, 아이콘", shortcutsSmall: "실행과 동작", languageSmall: "국가와 번역",
@@ -355,7 +355,7 @@ const labels = {
     simulated: "تم تحديد {name}. في التطبيق الحقيقي يفتحه Enter.",
     blocked: "هذه تجربة فقط. لا يتم فتح تطبيقات حقيقية من الموقع.",
     web: "بحث ويب تجريبي", ai: "وضع الذكاء التجريبي", calc: "في التطبيق الحقيقي يتم نسخ النتيجة",
-    timeTitle: "الوقت", timeHint: "Enter ينسخ الوقت المنسق", timeCopied: "في التطبيق الحقيقي يتم نسخ الوقت",
+    timeTitle: "الوقت", timeHint: "Enter ينسخ النتيجة", timeCopied: "في التطبيق الحقيقي يتم نسخ النتيجة",
     suggestions: "اقتراحات", applications: "تطبيقات", games: "ألعاب",
     appearanceSub: "تعديل شكل هذا العرض.", shortcutsSub: "معاينة الاختصارات مثل Nova.", languageSub: "تغيير النصوص الرئيسية للعرض.",
     appearanceSmall: "الخلفية والبطاقات والأيقونات", shortcutsSmall: "الفتح والإجراءات", languageSmall: "البلد والترجمة",
@@ -499,15 +499,190 @@ function localeCodeToBcp47(code) {
   return map[code] || code || "en-US";
 }
 
-function parseTimeQuery(text) {
-  const raw = String(text || "").trim();
-  if (!raw) return null;
-  const normalized = raw
+const durationFactors = {
+  week: 604800000,
+  day: 86400000,
+  hour: 3600000,
+  minute: 60000,
+  second: 1000,
+  millisecond: 1
+};
+
+const durationTargets = {
+  week: "day",
+  day: "hour",
+  hour: "minute",
+  minute: "second",
+  second: "millisecond",
+  millisecond: "millisecond"
+};
+
+const durationUnitAliases = {
+  ms: "millisecond",
+  millisecond: "millisecond",
+  milliseconds: "millisecond",
+  milliseconde: "millisecond",
+  millisecondes: "millisecond",
+  s: "second",
+  sec: "second",
+  secs: "second",
+  second: "second",
+  seconds: "second",
+  seconde: "second",
+  secondes: "second",
+  segundo: "second",
+  segundos: "second",
+  sekunde: "second",
+  sekunden: "second",
+  secondo: "second",
+  secondi: "second",
+  m: "minute",
+  min: "minute",
+  mins: "minute",
+  minute: "minute",
+  minutes: "minute",
+  minuto: "minute",
+  minutos: "minute",
+  minuut: "minute",
+  minuten: "minute",
+  h: "hour",
+  hr: "hour",
+  hrs: "hour",
+  hour: "hour",
+  hours: "hour",
+  heure: "hour",
+  heures: "hour",
+  hora: "hour",
+  horas: "hour",
+  stunde: "hour",
+  stunden: "hour",
+  ora: "hour",
+  ore: "hour",
+  uur: "hour",
+  uren: "hour",
+  j: "day",
+  d: "day",
+  day: "day",
+  days: "day",
+  jour: "day",
+  jours: "day",
+  dia: "day",
+  dias: "day",
+  tag: "day",
+  tage: "day",
+  giorno: "day",
+  giorni: "day",
+  dag: "day",
+  dagen: "day",
+  w: "week",
+  week: "week",
+  weeks: "week",
+  semaine: "week",
+  semaines: "week",
+  semana: "week",
+  semanas: "week",
+  woche: "week",
+  wochen: "week",
+  settimana: "week",
+  settimane: "week",
+  weken: "week"
+};
+
+const durationUnitPattern = Object.keys(durationUnitAliases)
+  .sort((a, b) => b.length - a.length)
+  .join("|");
+
+function normalizeTemporalText(text) {
+  return String(text || "")
+    .trim()
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function parseDurationNumber(value) {
+  const number = Number(String(value).replace(",", "."));
+  return Number.isFinite(number) && number >= 0 ? number : null;
+}
+
+function parseDurationQuery(text) {
+  const raw = String(text || "").trim();
+  if (!raw) return null;
+  const normalized = normalizeTemporalText(raw);
+
+  const compactHourMinute = normalized.match(/^(\d+(?:[,.]\d+)?)h([0-5]?\d)$/);
+  if (compactHourMinute) {
+    const hours = parseDurationNumber(compactHourMinute[1]);
+    const minutes = parseDurationNumber(compactHourMinute[2]);
+    if (hours === null || minutes === null) return null;
+    return {
+      input: raw,
+      totalMs: (hours * durationFactors.hour) + (minutes * durationFactors.minute),
+      targetUnit: "minute"
+    };
+  }
+
+  const termRegex = new RegExp(`(\\d+(?:[,.]\\d+)?)\\s*(${durationUnitPattern})`, "g");
+  const terms = [];
+  let cursor = 0;
+  let match;
+
+  while ((match = termRegex.exec(normalized)) !== null) {
+    const gap = normalized.slice(cursor, match.index);
+    if (!/^[\s,+-]*$/.test(gap)) return null;
+    const value = parseDurationNumber(match[1]);
+    const unit = durationUnitAliases[match[2]];
+    if (value === null || !unit) return null;
+    terms.push({ value, unit });
+    cursor = termRegex.lastIndex;
+  }
+
+  if (!terms.length || !/^[\s,+-]*$/.test(normalized.slice(cursor))) return null;
+
+  const totalMs = terms.reduce((sum, term) => sum + (term.value * durationFactors[term.unit]), 0);
+  const largest = terms.reduce((best, term) => {
+    return durationFactors[term.unit] > durationFactors[best.unit] ? term : best;
+  }, terms[0]);
+
+  return {
+    input: raw,
+    totalMs,
+    targetUnit: durationTargets[largest.unit] || "millisecond"
+  };
+}
+
+function formatDurationQuery(text, language = locale) {
+  const parsed = parseDurationQuery(text);
+  if (!parsed) return null;
+  const value = parsed.totalMs / durationFactors[parsed.targetUnit];
+  if (!Number.isFinite(value)) return null;
+  const cleanValue = Math.abs(value) < 1e-9 ? 0 : value;
+  const options = {
+    style: "unit",
+    unit: parsed.targetUnit,
+    unitDisplay: "short",
+    maximumFractionDigits: Number.isInteger(cleanValue) ? 0 : 2
+  };
+
+  try {
+    return {
+      input: parsed.input,
+      output: new Intl.NumberFormat(localeCodeToBcp47(language), options).format(cleanValue)
+    };
+  } catch {
+    return {
+      input: parsed.input,
+      output: `${new Intl.NumberFormat(localeCodeToBcp47(language), { maximumFractionDigits: 2 }).format(cleanValue)} ${parsed.targetUnit}`
+    };
+  }
+}
+
+function parseTimeQuery(text) {
+  const raw = String(text || "").trim();
+  if (!raw) return null;
+  const normalized = normalizeTemporalText(raw);
 
   let match = normalized.match(/^([01]?\d|2[0-3])(?::([0-5]\d))(?::([0-5]\d))?$/);
   if (match) return { label: raw, hour: Number(match[1]), minute: Number(match[2]), second: Number(match[3] || 0) };
@@ -518,12 +693,6 @@ function parseTimeQuery(text) {
     if (match[4] === "pm") hour += 12;
     return { label: raw, hour, minute: Number(match[2] || 0), second: Number(match[3] || 0) };
   }
-
-  match = normalized.match(/^([01]?\d|2[0-3])\s*(?:h|hr|hrs|heure|heures)(?:\s*([0-5]?\d)\s*(?:m|min|minute|minutes)?)?(?:\s*([0-5]?\d)\s*(?:s|sec|secs|seconde|secondes)?)?$/);
-  if (match) return { label: raw, hour: Number(match[1]), minute: Number(match[2] || 0), second: Number(match[3] || 0) };
-
-  match = normalized.match(/^([01]?\d|2[0-3])h([0-5]\d)(?:[:h]([0-5]\d))?$/);
-  if (match) return { label: raw, hour: Number(match[1]), minute: Number(match[2]), second: Number(match[3] || 0) };
 
   return null;
 }
@@ -546,7 +715,7 @@ function filteredApps() {
   if (view === "app") return apps.filter((item) => item[2] === "app");
   if (view === "game") return apps.filter((item) => item[2] === "game");
   if (view === "recent") return apps.filter((item) => item[2] === "recent");
-  if (!query || calcValue(query) !== null || formatTimeQuery(query) || query.includes("/")) return apps;
+  if (!query || calcValue(query) !== null || formatDurationQuery(query) || formatTimeQuery(query) || query.includes("/")) return apps;
   return apps.filter((item) => `${item[0]} ${item[1]} ${item[2]}`.toLowerCase().includes(query));
 }
 
@@ -573,7 +742,7 @@ function sectionFor(title, items) {
 function renderTiles() {
   const query = search.value.trim();
   const calc = calcValue(query);
-  const time = formatTimeQuery(query);
+  const time = formatDurationQuery(query) || formatTimeQuery(query);
   const isWeb = query.includes("/") && calc === null && !time;
 
   calcCard.hidden = calc === null;
@@ -724,7 +893,7 @@ search.addEventListener("keydown", (event) => {
       sendAiDemoMessage();
     } else if (calcValue(search.value.trim()) !== null) {
       showToast(t("calc"));
-    } else if (formatTimeQuery(search.value.trim())) {
+    } else if (formatDurationQuery(search.value.trim()) || formatTimeQuery(search.value.trim())) {
       showToast(t("timeCopied"));
     } else if (search.value.includes("/")) {
       showToast(t("web"));
