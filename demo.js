@@ -81,6 +81,8 @@ const labels = {
     languageSearch: "Rechercher une langue...",
     calculator: "Calculatrice", calcHint: "Entree copie le resultat", webSearch: "Recherche web", webBrowser: "Navigateur par defaut - simulation",
     aiMode: "Mode IA", aiIntro: "Parle a Nova Assistant", newChat: "Nouvelle discussion", projects: "Projets",
+    selectedCount: "{count} selectionnes - Entree pour simuler",
+    simulatedMany: "{count} elements simuleraient une ouverture dans la vraie app.",
     aiWelcome: "Je peux simuler l'ouverture d'apps, les recherches web et les reglages, sans toucher a ton PC."
   },
   en: {
@@ -119,6 +121,8 @@ const labels = {
     languageSearch: "Search a language...",
     calculator: "Calculator", calcHint: "Enter copies the result", webSearch: "Web search", webBrowser: "Default browser - simulation",
     aiMode: "AI mode", aiIntro: "Talk to Nova Assistant", newChat: "New chat", projects: "Projects",
+    selectedCount: "{count} selected - Enter to simulate",
+    simulatedMany: "{count} items would launch in the real app.",
     aiWelcome: "I can simulate app launches, web searches and settings without touching your PC."
   },
   es: {
@@ -157,6 +161,8 @@ const labels = {
     languageSearch: "Buscar idioma...",
     calculator: "Calculadora", calcHint: "Enter copia el resultado", webSearch: "Busqueda web", webBrowser: "Navegador predeterminado - simulacion",
     aiMode: "Modo IA", aiIntro: "Habla con Nova Assistant", newChat: "Nueva conversacion", projects: "Proyectos",
+    selectedCount: "{count} seleccionados - Enter para simular",
+    simulatedMany: "{count} elementos se abririan en la app real.",
     aiWelcome: "Puedo simular aperturas de apps, busquedas web y ajustes sin tocar tu PC."
   },
   de: {
@@ -195,6 +201,8 @@ const labels = {
     languageSearch: "Sprache suchen...",
     calculator: "Rechner", calcHint: "Enter kopiert das Ergebnis", webSearch: "Websuche", webBrowser: "Standardbrowser - Simulation",
     aiMode: "KI-Modus", aiIntro: "Sprich mit Nova Assistant", newChat: "Neuer Chat", projects: "Projekte",
+    selectedCount: "{count} ausgewaehlt - Enter zum Simulieren",
+    simulatedMany: "{count} Elemente wuerden in der echten App starten.",
     aiWelcome: "Ich kann App-Starts, Websuchen und Einstellungen simulieren, ohne deinen PC zu beruehren."
   },
   it: {
@@ -233,6 +241,8 @@ const labels = {
     languageSearch: "Cerca lingua...",
     calculator: "Calcolatrice", calcHint: "Enter copia il risultato", webSearch: "Ricerca web", webBrowser: "Browser predefinito - simulazione",
     aiMode: "Modo IA", aiIntro: "Parla con Nova Assistant", newChat: "Nuova chat", projects: "Progetti",
+    selectedCount: "{count} selezionati - Enter per simulare",
+    simulatedMany: "{count} elementi si aprirebbero nell'app reale.",
     aiWelcome: "Posso simulare apertura di app, ricerche web e impostazioni senza toccare il tuo PC."
   },
   pt: {
@@ -271,6 +281,8 @@ const labels = {
     languageSearch: "Pesquisar idioma...",
     calculator: "Calculadora", calcHint: "Enter copia o resultado", webSearch: "Pesquisa web", webBrowser: "Navegador padrao - simulacao",
     aiMode: "Modo IA", aiIntro: "Fale com Nova Assistant", newChat: "Nova conversa", projects: "Projetos",
+    selectedCount: "{count} selecionados - Enter para simular",
+    simulatedMany: "{count} itens seriam abertos no app real.",
     aiWelcome: "Posso simular abertura de apps, pesquisas web e definicoes sem tocar no seu PC."
   },
   nl: {
@@ -309,6 +321,8 @@ const labels = {
     languageSearch: "Zoek een taal...",
     calculator: "Rekenmachine", calcHint: "Enter kopieert het resultaat", webSearch: "Web zoeken", webBrowser: "Standaardbrowser - simulatie",
     aiMode: "AI-modus", aiIntro: "Praat met Nova Assistant", newChat: "Nieuwe chat", projects: "Projecten",
+    selectedCount: "{count} geselecteerd - Enter om te simuleren",
+    simulatedMany: "{count} items zouden starten in de echte app.",
     aiWelcome: "Ik kan app-starts, webzoekopdrachten en instellingen simuleren zonder je PC aan te raken."
   },
   ja: {
@@ -435,7 +449,9 @@ const siteTranslations = {
 let view = "all";
 let locale = "fr";
 let siteLocale = localStorage.getItem("nova.siteLocale") || "fr";
-let selectedId = "";
+let selectedIds = new Set();
+let anchorIndex = 0;
+let clickTimer = 0;
 let toastTimer = 0;
 
 function t(key, vars = {}) {
@@ -719,6 +735,160 @@ function filteredApps() {
   return apps.filter((item) => `${item[0]} ${item[1]} ${item[2]}`.toLowerCase().includes(query));
 }
 
+function itemId(item) {
+  return item[0];
+}
+
+function buildDemoGroups(items) {
+  if (view === "all") {
+    return [
+      [t("suggestions"), items.slice(0, 6)],
+      [t("applications"), apps.filter((item) => item[2] === "app").slice(0, 6)],
+      [t("games"), apps.filter((item) => item[2] === "game").slice(0, 6)]
+    ];
+  }
+
+  return [[tabs.find((tab) => tab.dataset.view === view)?.textContent || "Resultats", items]];
+}
+
+function uniqueVisibleItems(groups = buildDemoGroups(filteredApps())) {
+  const seen = new Set();
+  return groups
+    .flatMap((group) => group[1])
+    .filter((item) => {
+      const id = itemId(item);
+      if (seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
+}
+
+function syncSelection(visible, suppressDefault = false) {
+  if (suppressDefault) {
+    selectedIds = new Set();
+    anchorIndex = 0;
+    return;
+  }
+
+  const visibleIds = new Set(visible.map(itemId));
+  const valid = [...selectedIds].filter((id) => visibleIds.has(id));
+
+  if (valid.length) {
+    selectedIds = new Set(valid);
+    anchorIndex = Math.max(0, visible.findIndex((item) => itemId(item) === valid[0]));
+    return;
+  }
+
+  if (visible.length) {
+    selectedIds = new Set([itemId(visible[0])]);
+    anchorIndex = 0;
+  } else {
+    selectedIds = new Set();
+    anchorIndex = 0;
+  }
+}
+
+function updateSelectionHint() {
+  const visible = uniqueVisibleItems();
+  const selected = visible.filter((item) => selectedIds.has(itemId(item)));
+  if (selected.length === 1) {
+    selectionHint.textContent = itemId(selected[0]);
+    return;
+  }
+  if (selected.length > 1) {
+    selectionHint.textContent = t("selectedCount", { count: selected.length });
+    return;
+  }
+  selectionHint.textContent = t("select");
+}
+
+function updateSelectionUI() {
+  sections.querySelectorAll(".tile").forEach((tile) => {
+    const selected = selectedIds.has(tile.dataset.name);
+    tile.classList.toggle("is-selected", selected);
+    tile.setAttribute("aria-selected", String(selected));
+  });
+  updateSelectionHint();
+}
+
+function selectSingle(id) {
+  const visible = uniqueVisibleItems();
+  selectedIds = new Set([id]);
+  anchorIndex = Math.max(0, visible.findIndex((item) => itemId(item) === id));
+  updateSelectionUI();
+}
+
+function toggleSelection(id) {
+  const next = new Set(selectedIds);
+  if (next.has(id)) next.delete(id);
+  else next.add(id);
+  selectedIds = next;
+  const visible = uniqueVisibleItems();
+  anchorIndex = Math.max(0, visible.findIndex((item) => itemId(item) === id));
+  updateSelectionUI();
+}
+
+function selectRange(toId) {
+  const visible = uniqueVisibleItems();
+  const toIndex = visible.findIndex((item) => itemId(item) === toId);
+  if (toIndex < 0) return;
+  const fromIndex = Math.max(0, Math.min(anchorIndex, visible.length - 1));
+  const start = Math.min(fromIndex, toIndex);
+  const end = Math.max(fromIndex, toIndex);
+  selectedIds = new Set(visible.slice(start, end + 1).map(itemId));
+  updateSelectionUI();
+}
+
+function tileByName(name) {
+  return [...sections.querySelectorAll(".tile")].find((tile) => tile.dataset.name === name);
+}
+
+function gridColumnCount() {
+  const grid = sections.querySelector(".tile-grid");
+  if (!grid) return 6;
+  const columns = window.getComputedStyle(grid).gridTemplateColumns.split(" ").filter(Boolean);
+  return Math.max(1, columns.length || 6);
+}
+
+function selectAtIndex(index, extend = false) {
+  const visible = uniqueVisibleItems();
+  if (!visible.length) return;
+  const nextIndex = Math.min(Math.max(index, 0), visible.length - 1);
+  const id = itemId(visible[nextIndex]);
+  if (extend) selectRange(id);
+  else {
+    selectedIds = new Set([id]);
+    anchorIndex = nextIndex;
+    updateSelectionUI();
+  }
+  tileByName(id)?.scrollIntoView({ block: "nearest", inline: "nearest" });
+}
+
+function selectOffset(offset, extend = false) {
+  const visible = uniqueVisibleItems();
+  if (!visible.length) return;
+  const currentId = [...selectedIds][0] || itemId(visible[0]);
+  const currentIndex = Math.max(0, visible.findIndex((item) => itemId(item) === currentId));
+  selectAtIndex(currentIndex + offset, extend);
+}
+
+function selectedVisibleItems() {
+  return uniqueVisibleItems().filter((item) => selectedIds.has(itemId(item)));
+}
+
+function simulateOpenSelection() {
+  const selected = selectedVisibleItems();
+  if (selected.length === 1) {
+    showToast(t("simulated", { name: itemId(selected[0]) }));
+    return;
+  }
+  if (selected.length > 1) {
+    showToast(t("simulatedMany", { count: selected.length }));
+    return;
+  }
+  showToast(t("blocked"));
+}
+
 function sectionFor(title, items) {
   return `
     <section class="mock-section">
@@ -728,7 +898,7 @@ function sectionFor(title, items) {
       </header>
       <div class="tile-grid">
         ${items.map((item) => `
-          <button class="tile ${selectedId === item[0] ? "is-selected" : ""}" type="button" data-name="${safe(item[0])}">
+          <button class="tile ${selectedIds.has(itemId(item)) ? "is-selected" : ""}" type="button" data-name="${safe(itemId(item))}" aria-selected="${selectedIds.has(itemId(item))}">
             <span class="tile-icon" style="--icon-a:${item[4]}; --icon-b:${item[5]};">${safe(item[3])}</span>
             <span class="tile-label">${safe(item[0])}</span>
             <span class="tile-source">${safe(item[1])}</span>
@@ -767,24 +937,35 @@ function renderTiles() {
   }
 
   const items = filteredApps();
-  const groups = [];
-  if (view === "all") {
-    groups.push([t("suggestions"), items.slice(0, 6)]);
-    groups.push([t("applications"), apps.filter((item) => item[2] === "app").slice(0, 6)]);
-    groups.push([t("games"), apps.filter((item) => item[2] === "game").slice(0, 6)]);
-  } else {
-    groups.push([tabs.find((tab) => tab.dataset.view === view)?.textContent || "Resultats", items]);
-  }
+  const groups = buildDemoGroups(items);
+  const visible = uniqueVisibleItems(groups);
+  syncSelection(visible, calc !== null || Boolean(time) || isWeb);
 
   sections.innerHTML = groups.filter((group) => group[1].length).map((group) => sectionFor(group[0], group[1])).join("");
   sections.querySelectorAll(".tile").forEach((tile) => {
-    tile.addEventListener("click", () => {
-      selectedId = tile.dataset.name;
-      selectionHint.textContent = selectedId;
-      renderTiles();
-      showToast(t("simulated", { name: selectedId }));
+    tile.addEventListener("click", (event) => {
+      const id = tile.dataset.name;
+      if (event.shiftKey) {
+        window.clearTimeout(clickTimer);
+        selectRange(id);
+        return;
+      }
+      if (event.ctrlKey || event.metaKey) {
+        window.clearTimeout(clickTimer);
+        toggleSelection(id);
+        return;
+      }
+      window.clearTimeout(clickTimer);
+      clickTimer = window.setTimeout(() => selectSingle(id), 170);
+    });
+    tile.addEventListener("dblclick", (event) => {
+      event.preventDefault();
+      window.clearTimeout(clickTimer);
+      selectSingle(tile.dataset.name);
+      simulateOpenSelection();
     });
   });
+  updateSelectionHint();
   statusText.textContent = t("status", { count: apps.length });
 }
 
@@ -886,7 +1067,22 @@ search.addEventListener("keydown", (event) => {
   if (event.key === "Tab") {
     event.preventDefault();
     openAiMode();
+    return;
   }
+
+  if (!launcher.classList.contains("is-ai-mode") && ["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft"].includes(event.key)) {
+    event.preventDefault();
+    const columns = gridColumnCount();
+    const offsets = {
+      ArrowDown: columns,
+      ArrowUp: -columns,
+      ArrowRight: 1,
+      ArrowLeft: -1
+    };
+    selectOffset(offsets[event.key], event.shiftKey);
+    return;
+  }
+
   if (event.key === "Enter") {
     event.preventDefault();
     if (launcher.classList.contains("is-ai-mode")) {
@@ -898,7 +1094,7 @@ search.addEventListener("keydown", (event) => {
     } else if (search.value.includes("/")) {
       showToast(t("web"));
     } else {
-      showToast(t("blocked"));
+      simulateOpenSelection();
     }
   }
   if (event.key === "Escape") {

@@ -1642,6 +1642,7 @@ footer {
 }
 
 .nova-live-demo .tile {
+  position: relative;
   display: grid;
   justify-items: center;
   align-content: start;
@@ -1660,6 +1661,24 @@ footer {
 .nova-live-demo .tile.is-selected {
   border-color: var(--line-hot);
   background: var(--tile-selected);
+}
+
+.nova-live-demo .tile.is-selected {
+  box-shadow:
+    inset 0 0 0 1px rgba(157, 242, 208, 0.18),
+    0 18px 42px rgba(0, 0, 0, 0.18);
+}
+
+.nova-live-demo .tile.is-selected::before {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #9df2d0;
+  box-shadow: 0 0 18px rgba(157, 242, 208, 0.66);
+  content: "";
 }
 
 .nova-live-demo .tile {
