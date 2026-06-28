@@ -14,8 +14,14 @@ Quand tu modifies le site, envoie uniquement les fichiers qui ont change :
 - `assets/` seulement si une image change
 - fichiers Google/Bing de validation, a garder a la racine
 
-Le ZIP de l'app reste dans une GitHub Release :
-`https://github.com/strideur/strideur.github.io/releases/download/v1.0.0/Nova-Command-portable.zip`
+Les fichiers de l'app restent dans une GitHub Release `v1.1.0`. Ajoute obligatoirement :
+
+- `Nova-Command-Setup-1.1.0.exe`
+- `Nova-Command-Setup-1.1.0.exe.blockmap`
+- `latest.yml`
+
+Ces trois fichiers permettent l'installation, la reinstallation et les mises a jour automatiques.
+Le ZIP portable peut aussi etre joint, mais il ne se met pas a jour automatiquement.
 
 ## URL publiques
 
