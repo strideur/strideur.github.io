@@ -14,10 +14,10 @@ Quand tu modifies le site, envoie uniquement les fichiers qui ont change :
 - `assets/` seulement si une image change
 - fichiers Google/Bing de validation, a garder a la racine
 
-Les fichiers actuels de l'app sont dans la GitHub Release `v1.1.0`. Ajoute obligatoirement :
+Les fichiers actuels de l'app sont dans la GitHub Release `v1.2.0`. Ajoute obligatoirement :
 
-- `Nova-Command-Setup-1.1.0.exe`
-- `Nova-Command-Setup-1.1.0.exe.blockmap`
+- `Nova-Command-Setup-1.2.0.exe`
+- `Nova-Command-Setup-1.2.0.exe.blockmap`
 - `latest.yml`
 
 Ces trois fichiers permettent l'installation, la reinstallation et les mises a jour automatiques.
